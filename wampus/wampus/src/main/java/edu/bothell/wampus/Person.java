@@ -7,5 +7,4 @@ public class Person{
 
 // In a new class called main, create a new instance of itself
 // Create a new Person class
-
 }
