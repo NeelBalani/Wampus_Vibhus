@@ -1,5 +1,5 @@
 package edu.bothell.wampus;
 
-public interface Person{
+public class Person{
 
 }
