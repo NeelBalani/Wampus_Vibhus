@@ -2,7 +2,7 @@ package edu.bothell.wampus;
 
 public class Vibhu {
     // Properties
-    private String name = "vibhu"
+    private String name = "vibhu";
     
     public Vibhu(){
         System.out.println("Hello");
