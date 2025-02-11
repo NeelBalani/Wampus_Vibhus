@@ -1,6 +1,8 @@
 package edu.bothell.wampus;
 
 public class Vibhu {
+    //interface teammate
+    //person all classes extend person
     // Properties
     private String name = "vibhu";
     
