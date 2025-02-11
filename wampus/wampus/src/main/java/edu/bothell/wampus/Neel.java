@@ -1,6 +1,6 @@
 package edu.bothell.wampus;
 
-public class Neel {
+public class Neel extends Person{
     
     public Neel(){
         System.out.println("hi");

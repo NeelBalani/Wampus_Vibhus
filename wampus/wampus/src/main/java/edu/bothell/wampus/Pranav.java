@@ -1,6 +1,6 @@
 package edu.bothell.wampus;
 
-public class Pranav {
+public class Pranav extends Person{
 
     private String name;
     private int age;

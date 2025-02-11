@@ -1,6 +1,6 @@
 package edu.bothell.wampus;
 
-public class Vibhu {
+public class Vibhu extends Person{
     //interface teammate
     //person all classes extend person
     // Properties
