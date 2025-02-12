@@ -8,10 +8,16 @@ public class Vibhu extends Person{
     //change
     
     public Vibhu(){
-        System.out.println("Hello");
+        jobs.add("Hazards, Coins, Warnings");
     }
 
     public void Hello(){
         System.out.println("Hi im vibhu");
+    }
+
+    public void getJobs(){
+        for(int i = 0; i < jobs.size(); i++){
+            System.out.print(jobs.get(i) + " ");
+        }
     }
 }

@@ -1,12 +1,19 @@
 package edu.bothell.wampus;
 
 public class Neel extends Person{
+    private String name = "Neel";
     
     public Neel(){
-        System.out.println("hi");
+        jobs.add("Bats, Wumpus, Scoring");
     }
 
     public void Hello(){
         System.out.println("Hi im neel");
+    }
+
+    public void getJobs(){
+        for(int i = 0; i < jobs.size(); i++){
+            System.out.print(jobs.get(i) + " ");
+        }
     }
 }
