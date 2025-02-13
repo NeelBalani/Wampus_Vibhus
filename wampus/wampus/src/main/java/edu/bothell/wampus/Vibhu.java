@@ -8,7 +8,7 @@ public class Vibhu extends Person{
     //change
     
     public Vibhu(){
-        jobs.add("Hazards, Coins, Warnings");
+        jobs.add("ControllerUI, Coins, Warnings");
     }
 
     public void Hello(){
