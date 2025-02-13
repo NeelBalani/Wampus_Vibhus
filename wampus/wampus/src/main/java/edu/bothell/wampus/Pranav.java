@@ -1,22 +1,34 @@
 package edu.bothell.wampus;
 
-public class Pranav extends Person{
+import java.util.ArrayList;
+import java.util.List;
 
+public class Pranav implements Teammate, Person {
     private String name;
-    private int age;
-        
-    public Pranav(){
-        jobs.add("Cave, Warnings");
+    private List<String> actions;
+
+    public Pranav(String name) {
+        this.name = name;
+        this.actions = new ArrayList<>();
+        actions.add("Action 1");
+        actions.add("Action 2");
+        actions.add("Action 3");
     }
 
-    public void HelloWorld(){
-        System.out.println("Hello World");
+    @Override
+    public String getName() {
+        return name;
     }
 
+    @Override
+    public List<String> getActions() {
+        return actions;
+    }
 
-    public void getJobs(){
-        for(int i = 0; i < jobs.size(); i++){
-            System.out.print(jobs.get(i) + " ");
-        }
+    @Override
+    public Result doAction(UI ui) {
+        int actionIndex = ui.getActionChoice(actions);
+        String action = actions.get(actionIndex);
+        return new Result("Performed " + action);
     }
 }

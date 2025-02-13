@@ -1,17 +1,13 @@
 package edu.bothell.wampus;
 
-public class Main{
-//Pranav Is testing
-// Testing 123
-    public static void main(String[] args){
+public class Main {
+    public static void main(String[] args) {
         UI ui = new ConsoleUI();  // Students must implement ConsoleUI
         Controller controller = new Controller(ui); // Students must implement Controller
 
-        // Students will create and add their own Person implementations
-        // controller.addPerson(new GusReiber("Mr. Reiber"));
-        
+        // Add your custom Person implementation
+        controller.addPerson(new Pranav("pranav"));
 
         controller.start();
-    } 
-
+    }
 }
