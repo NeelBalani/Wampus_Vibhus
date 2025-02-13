@@ -3,7 +3,7 @@ package edu.bothell.wampus;
 public class Vibhu extends Person{
     
     public Vibhu(){
-        jobs.add("Hazards, Coins, Warnings");
+        jobs.add("ControllerUI, Coins, Warnings");
     }
 
     public void Hello(){
