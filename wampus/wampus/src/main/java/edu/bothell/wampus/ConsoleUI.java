@@ -6,14 +6,14 @@ import java.util.Scanner;
 public class ConsoleUI implements UI {
     private Scanner scanner;
 
+        
+    // Constructors
+    
+    
     public ConsoleUI() {
         scanner = new Scanner(System.in);
     }
-    // Constructors
 
-    public ConsoleUI(){
-
-    }
 
     @Override
     public void showMessage(String message) {
