@@ -1,9 +1,9 @@
 package edu.bothell.wampus;
 
-public interface Teammate{
+import java.util.List;
 
-    Person getTeammateByName(String PersonName);
-    
-    void workTogether(Person p1, Person p2);
-
+public interface Teammate {
+    String getName();
+    List<String> getActions();
+    Result doAction(UI ui);
 }

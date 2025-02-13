@@ -5,8 +5,7 @@ public class Main {
         UI ui = new ConsoleUI();  // Students must implement ConsoleUI
         Controller controller = new Controller(ui); // Students must implement Controller
 
-        // Add your custom Person implementation
-        controller.addPerson(new Pranav("pranav"));
+        controller.addPerson(new Pranav("Pranav"));
 
         controller.start();
     }
