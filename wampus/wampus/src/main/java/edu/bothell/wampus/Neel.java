@@ -1,7 +1,6 @@
 package edu.bothell.wampus;
 
 public class Neel extends Person{
-    private String name = "Neel";
     
     public Neel(){
         jobs.add("Bats, Wumpus, Scoring");

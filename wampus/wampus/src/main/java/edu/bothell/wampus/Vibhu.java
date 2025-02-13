@@ -1,11 +1,6 @@
 package edu.bothell.wampus;
 
 public class Vibhu extends Person{
-    //interface teammate
-    //person all classes extend person
-    // Properties
-    private String name = "vibhu";
-    //change
     
     public Vibhu(){
         jobs.add("Hazards, Coins, Warnings");

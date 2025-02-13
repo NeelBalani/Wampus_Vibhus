@@ -2,8 +2,6 @@ package edu.bothell.wampus;
 
 public class Pranav extends Person{
 
-    private String name;
-    private int age;
         
     public Pranav(){
         jobs.add("Cave, Warnings");
