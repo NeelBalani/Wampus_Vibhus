@@ -8,6 +8,10 @@ public class ConsoleUI implements UI{
 
     // Constructors
 
+    public ConsoleUI(){
+
+    }
+
     // Methods
 
     public void showMessage(String message){
