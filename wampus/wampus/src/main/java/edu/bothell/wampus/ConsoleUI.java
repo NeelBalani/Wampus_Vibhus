@@ -3,50 +3,48 @@ package edu.bothell.wampus;
 import java.util.List;
 import java.util.Scanner;
 
-public class ConsoleUI implements UI{
-    // Properties
+public class ConsoleUI implements UI {
+    private Scanner scanner;
 
+    public ConsoleUI() {
+        scanner = new Scanner(System.in);
+    }
     // Constructors
 
     public ConsoleUI(){
 
     }
 
-    // Methods
-
-    public void showMessage(String message){
+    @Override
+    public void showMessage(String message) {
         System.out.println(message);
     }
-    public void showPersonTurn(Person person){
 
+    @Override
+    public void showPersonTurn(Person person) {
+        showMessage(person.getName() + "'s turn:");
     }
-    public int getActionChoice(List<String> actions){
-        Scanner scanner = new Scanner(System.in);
 
-        for(int index = 0; index < actions.size(); index++){
+    @Override
+    public int getActionChoice(List<String> actions) {
+        for (int index = 0; index < actions.size(); index++) {
             showMessage(index + ": " + actions.get(index));
-        } showMessage("Type the number of the action you want to do");
-
-        String action = scanner.nextLine();
-        int actionChoice = Integer.parseInt(action);
-        scanner.close();
-
-        return actionChoice;
-
-    }
-    public boolean askToContinue(String name){
-        Scanner scanner = new Scanner(System.in);
-        showMessage("Do you want to continue (y/n)");
-        String choiceString = scanner.nextLine();
-
-        boolean choice = true;
-        if(choiceString.equals("n")){
-            choice = false;
         }
+        showMessage("Type the number of the action you want to do:");
 
-        scanner.close();
-        return choice;
+        int actionChoice = Integer.parseInt(scanner.nextLine());
+        return actionChoice;
     }
-    public void displaySummary(){}
 
+    @Override
+    public boolean askToContinue(String name) {
+        showMessage("Do you want to continue (y/n)?");
+        String choiceString = scanner.nextLine();
+        return !choiceString.equalsIgnoreCase("n");
+    }
+
+    @Override
+    public void displaySummary() {
+       
+    }
 }

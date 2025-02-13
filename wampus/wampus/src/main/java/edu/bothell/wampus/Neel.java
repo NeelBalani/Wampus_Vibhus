@@ -1,18 +1,35 @@
 package edu.bothell.wampus;
 
-public class Neel extends Person{
-    
-    public Neel(){
-        jobs.add("Bats, Wumpus, Scoring");
+import java.util.ArrayList;
+import java.util.List;
+
+public class Neel implements Teammate, Person {
+    private String name;
+    private List<String> actions;
+
+    public Neel(String name) {
+        this.name = name;
+        this.actions = new ArrayList<>();
+        actions.add("Action 1");
+        actions.add("Action 2");
+        actions.add("Action 3");
     }
 
-    public void Hello(){
-        System.out.println("Hi im neel");
+    @Override
+    public String getName() {
+        return name;
     }
 
-    public void getJobs(){
-        for(int i = 0; i < jobs.size(); i++){
-            System.out.print(jobs.get(i) + " ");
-        }
+    @Override
+    public List<String> getActions() {
+        return actions;
+    }
+
+    @Override
+    public Result doAction(UI ui) {
+        int actionIndex = ui.getActionChoice(actions);
+        String action = actions.get(actionIndex);
+        // Perform the action and return a result
+        return new Result("Performed " + action);
     }
 }

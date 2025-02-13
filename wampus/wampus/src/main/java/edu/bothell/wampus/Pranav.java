@@ -10,9 +10,9 @@ public class Pranav implements Teammate, Person {
     public Pranav(String name) {
         this.name = name;
         this.actions = new ArrayList<>();
-        actions.add("Action 1");
-        actions.add("Action 2");
-        actions.add("Action 3");
+        actions.add("Shoot");
+        actions.add("Move");
+        actions.add("Heal");
     }
 
     @Override
