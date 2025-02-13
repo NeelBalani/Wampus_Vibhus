@@ -29,6 +29,7 @@ public class Pranav implements Teammate, Person {
     public Result doAction(UI ui) {
         int actionIndex = ui.getActionChoice(actions);
         String action = actions.get(actionIndex);
+        // Perform the action and return a result
         return new Result("Performed " + action);
     }
 }
