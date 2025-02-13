@@ -5,42 +5,56 @@ import java.util.List;
 
 public class Controller {
     private UI ui;
-    private List<Teammate> teammates;
+    private List<Teammate> activeTeammates;
+    private List<Teammate> allTeammates;
     private Teammate activeTeammate;
+    private Result[] summary;
 
     public Controller(UI ui) {
         this.ui = ui;
-        this.teammates = new ArrayList<>();
+        this.activeTeammates = new ArrayList<>();
+        this.allTeammates = this.activeTeammates;
     }
 
     public void addPerson(Teammate teammate) {
-        teammates.add(teammate);
+        activeTeammates.add(teammate);
     }
 
     public void start() {
-        boolean continueGame = true;
-        while (continueGame) {
-            for (Teammate teammate : teammates) {
-                ui.showPersonTurn((Person) teammate);
-                Result result = teammate.doAction(ui);
-                ui.showMessage(result.getMessage());
-    
-                continueGame = ui.askToContinue(teammate.getName());
-                if (!continueGame) {
-                    break;
-                }
+        boolean continueGame;
+        while (!gameOver()) {
+            ui.showPersonTurn((Person) activeTeammate);
+            Result result = activeTeammate.doAction(ui);
+            ui.showMessage(result.getMessage());
+
+            continueGame = ui.askToContinue(activeTeammate.getName());
+            if(!continueGame){
+                removePlayer(activeTeammate);
             }
         }
         ui.displaySummary();
     }
 
+    public boolean gameOver(){
+        return this.activeTeammates.isEmpty();
+    }
+
+    public void removePlayer(Teammate teammate){
+        this.activeTeammates.remove(teammate);
+    }
+
     public void updateActivePlayer(){
-        int index = this.teammates.indexOf(activeTeammate);
+        int index = this.activeTeammates.indexOf(activeTeammate);
         index++;
-        if(index >= this.teammates.size()-1){
+        if(index >= this.activeTeammates.size()-1){
             index = 0;
         }
-        this.activeTeammate = this.teammates.get(index);
+        this.activeTeammate = this.activeTeammates.get(index);
     }
     
+    public void returnSummary(){
+        for(Result results : this.summary){
+            ui.showMessage(results.getMessage());
+        }
+    }
 }
