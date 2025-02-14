@@ -5,10 +5,11 @@ import java.util.List;
 
 public class Controller {
     private UI ui;
-    private List<Teammate> activeTeammates;
-    private List<Teammate> allTeammates;
-    private Teammate activeTeammate;
+    private List<Person> activeTeammates;
+    private List<Person> allTeammates;
+    private Person activeTeammate;
     private List<Result> summary;
+    private boolean continueGame;
 
     public Controller() {
         this.activeTeammates = new ArrayList<>();
@@ -19,35 +20,41 @@ public class Controller {
         this.ui = ui;
     }
 
-    public void addPerson(Teammate teammate) {
+    public void addPerson(Person teammate) {
         activeTeammates.add(teammate);
     }
 
     public void start() {
-        boolean continueGame;
+        this.activeTeammate = this.activeTeammates.get(0);
         while (!gameOver()) {
-            ui.showPersonTurn((Person) activeTeammate);
-            Result result = activeTeammate.doAction(ui);
+
+            ui.showPersonTurn((this.activeTeammate));
+            Result result = this.activeTeammate.doAction(ui);
+            addResult(result);
             ui.showMessage(result.getMessage());
 
-            continueGame = ui.askToContinue(activeTeammate.getName());
-            if(!continueGame){
-                removePlayer(activeTeammate);
+            this.continueGame = ui.askToContinue(this.activeTeammate.getName());
+            if(!this.continueGame){
+                removePlayer(this.activeTeammate);
             }
         }
         ui.displaySummary();
+    }
+
+    public void addResult(Result result){
+        this.summary.add(result);
     }
 
     public boolean gameOver(){
         return this.activeTeammates.isEmpty();
     }
 
-    public void removePlayer(Teammate teammate){
+    public void removePlayer(Person teammate){
         this.activeTeammates.remove(teammate);
     }
 
     public void updateActivePlayer(){
-        int index = this.activeTeammates.indexOf(activeTeammate);
+        int index = this.activeTeammates.indexOf(this.activeTeammate);
         index++;
         if(index >= this.activeTeammates.size()-1){
             index = 0;
