@@ -30,6 +30,6 @@ public class Neel implements Teammate, Person {
         int actionIndex = ui.getActionChoice(actions);
         String action = actions.get(actionIndex);
         // Perform the action and return a result
-        return new Result("Performed " + action);
+        return new Result("Performed " + action, this);
     }
 }
