@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Controller {
     private UI ui;
-    private List<Person> activeTeammates;
-    private List<Person> allTeammates;
+    private List<Person> activeTeammates = new ArrayList<>();
+    private List<Person> allTeammates = new ArrayList<>();
     private Person activeTeammate;
-    private List<Result> summary;
+    private List<Result> summary = new ArrayList<>();
     private boolean continueGame;
 
     public Controller() {
@@ -28,17 +28,17 @@ public class Controller {
         this.activeTeammate = this.activeTeammates.get(0);
         while (!gameOver()) {
 
-            ui.showPersonTurn((this.activeTeammate));
-            Result result = this.activeTeammate.doAction(ui);
+            this.ui.showPersonTurn((this.activeTeammate));
+            Result result = this.activeTeammate.doAction(this.ui);
             addResult(result);
-            ui.showMessage(result.getMessage());
+            this.ui.showMessage(result.getMessage());
 
-            this.continueGame = ui.askToContinue(this.activeTeammate.getName());
+            this.continueGame = this.ui.askToContinue(this.activeTeammate.getName());
             if(!this.continueGame){
                 removePlayer(this.activeTeammate);
             }
         }
-        ui.displaySummary();
+        this.ui.displaySummary();
     }
 
     public void addResult(Result result){
