@@ -4,15 +4,19 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleUI implements UI {
+    
     private Scanner scanner;
+    private Controller controller;
 
         
     // Constructors
-    
-    
-    public ConsoleUI() {
+    public ConsoleUI(Controller controller) {
         scanner = new Scanner(System.in);
+        this.controller = controller;
+        this.controller.setUI(this);
     }
+
+
 
 
     @Override
@@ -22,7 +26,7 @@ public class ConsoleUI implements UI {
 
     @Override
     public void showPersonTurn(Person person) {
-        showMessage(person.getName() + "'s turn:");
+        showMessage(person.getName() + "'s turn");
     }
 
     @Override
@@ -45,6 +49,9 @@ public class ConsoleUI implements UI {
 
     @Override
     public void displaySummary() {
-       
+        List<Result> results = this.controller.getSummary();
+        for(Result r : results){
+            showMessage(r.getMessage());
+        }
     }
 }

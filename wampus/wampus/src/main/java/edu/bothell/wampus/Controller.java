@@ -8,12 +8,15 @@ public class Controller {
     private List<Teammate> activeTeammates;
     private List<Teammate> allTeammates;
     private Teammate activeTeammate;
-    private Result[] summary;
+    private List<Result> summary;
 
-    public Controller(UI ui) {
-        this.ui = ui;
+    public Controller() {
         this.activeTeammates = new ArrayList<>();
         this.allTeammates = this.activeTeammates;
+    }
+
+    public void setUI(UI ui){
+        this.ui = ui;
     }
 
     public void addPerson(Teammate teammate) {
@@ -51,9 +54,7 @@ public class Controller {
         this.activeTeammate = this.activeTeammates.get(index);
     }
     
-    public void returnSummary(){
-        for(Result results : this.summary){
-            ui.showMessage(results.getMessage());
-        }
+    public List<Result> getSummary(){
+        return this.summary;
     }
 }

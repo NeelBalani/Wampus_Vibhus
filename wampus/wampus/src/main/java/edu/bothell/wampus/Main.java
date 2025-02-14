@@ -2,8 +2,8 @@ package edu.bothell.wampus;
 
 public class Main {
     public static void main(String[] args) {
-        UI ui = new ConsoleUI();
-        Controller controller = new Controller(ui);
+        Controller controller = new Controller();
+        UI ui = new ConsoleUI(controller);
 
         controller.addPerson(new Pranav("Pranav"));
 
