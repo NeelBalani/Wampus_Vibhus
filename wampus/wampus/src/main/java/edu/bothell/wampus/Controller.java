@@ -26,7 +26,6 @@ public class Controller {
             ui.showPersonTurn((Person) activeTeammate);
             Result result = activeTeammate.doAction(ui);
             ui.showMessage(result.getMessage());
-
             continueGame = ui.askToContinue(activeTeammate.getName());
             if(!continueGame){
                 removePlayer(activeTeammate);
