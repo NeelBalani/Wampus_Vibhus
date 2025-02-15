@@ -1,12 +1,16 @@
 package edu.bothell.wampus;
 
+import java.util.Arrays;
+
 public enum Directions {
-    NE(0, -1),      // North-East
+    // NE(0, -1),      // North-East
     E(1, 0),     // East
-    SE(0, 1),    // South-East
-    SW(-1, 1),      // South-West
+    // SE(0, 1),    // South-East
+    // SW(-1, 1),      // South-West
     W(-1, 0),       // West
-    NW(-1, -1);        // North-West
+    // NW(-1, -1)
+    S(0,1),
+    N(0,-1);        // North-West
 
     private final int dx;
     private final int dy;
@@ -21,6 +25,7 @@ public enum Directions {
         this.offset = b;
         return this;
     }
+
 
     public void shift(){
         this.offset = true;
@@ -40,12 +45,14 @@ public enum Directions {
      */
     public Directions opposite() {
         switch (this) {
-            case NE: return SW;
+            //case NE: return SW;
             case E:  return W;
-            case SE: return NW;
-            case SW: return NE;
+            //case SE: return NW;
+            //case SW: return NE;
             case W:  return E;
-            case NW: return SE;
+            //case NW: return SE;
+            case N: return S;
+            case S: return N;
             default: throw new IllegalStateException("Unexpected value: " + this);
         }
     }

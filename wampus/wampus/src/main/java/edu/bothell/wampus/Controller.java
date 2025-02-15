@@ -30,6 +30,12 @@ public class Controller {
 
             this.ui.showPersonTurn((this.activeTeammate));
             Result result = this.activeTeammate.doAction(this.ui);
+            // Check if the player moved
+            if(result.getAction().equals("Move")){
+                Directions direction = activeTeammate.doMove(this.ui);
+                result.addDirectionToMessage(direction);
+            }
+
             addResult(result);
             this.ui.showMessage(result.getMessage());
 
@@ -37,6 +43,7 @@ public class Controller {
             if(!this.continueGame){
                 removePlayer(this.activeTeammate);
             }
+            if(!gameOver()) updateActivePlayer();
         }
         this.ui.displaySummary();
     }
