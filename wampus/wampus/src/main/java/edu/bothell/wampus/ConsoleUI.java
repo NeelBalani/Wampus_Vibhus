@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleUI implements UI {
-    
+
+    // Properties
     private Scanner scanner;
     private Controller controller;
 
@@ -18,7 +19,7 @@ public class ConsoleUI implements UI {
 
 
 
-
+    // Methods
     @Override
     public void showMessage(String message) {
         System.out.println(message);
