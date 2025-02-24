@@ -17,6 +17,7 @@ public class GameLocation {
         this.locationId = locationId;
     }
 
+
     //Method
 
     public int[] getLocation(){

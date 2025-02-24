@@ -2,11 +2,25 @@ package edu.bothell.wampus;
 
 public class Cave {
 
-    private int[][] cave = new int[6][5];
+    private GameLocation[][] cave = new GameLocation[5][6];
 
 
     public Cave(){
-        
+        for(int i = 0; i < cave.length; i++){
+            for(int j = 0; j < cave[i].length; j++){
+                cave[i][j] = new GameLocation(i,j,getLocationId(i, j));
+            }
+        }
+    }
+
+    public GameLocation spawnPoint(){
+        return cave[0][0];
+    }
+
+    public int getLocationId(int i, int j){
+        i *= 6;
+        i += j + 1;
+        return i;
     }
 
 
