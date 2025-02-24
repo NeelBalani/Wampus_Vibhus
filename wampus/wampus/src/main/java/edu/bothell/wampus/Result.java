@@ -19,9 +19,13 @@ public class Result {
     // Methods
 
     public void addDirectionToMessage(Directions direction) {
-        if(this.message.equals("Shoot") || this.message.equals("Move")){
+        if(this.message.equals("Shoot")){
             this.message += " to the " + (direction.name());
         }
+    }
+
+    public void addFinalGameLocation(GameLocation location) {
+        if(this.message.equals("Move"))
     }
 
     public String getAction() {

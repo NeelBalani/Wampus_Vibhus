@@ -12,10 +12,21 @@ public class LocationManager {
     public LocationManager(List<Person> players, Cave cave){
         this.cave = cave;
 
+        setNewPlayers(players);
+    }
+    public LocationManager(Cave cave){
+        this.cave = cave;
+    }
+
+    // Methods
+
+    public void setNewPlayers (List<Person> players){
         for(Person p: players){
             playerLocations.put(p, this.cave.spawnPoint());
         }
     }
 
-    // Methods
+    public GameLocation getGameLocation(Person p){
+        return this.playerLocations.get(p);
+    }
 }

@@ -10,10 +10,18 @@ public class Controller {
     private Person activeTeammate;
     private List<Result> summary = new ArrayList<>();
     private boolean continueGame;
+    private LocationManager locationManager;
+    private Cave cave;
 
     public Controller() {
         this.activeTeammates = new ArrayList<>();
         this.allTeammates = this.activeTeammates;
+        this.cave = new Cave();
+        this.locationManager = new LocationManager(this.cave);
+    }
+
+    public void addPlayersToLocationManager(){
+        this.locationManager.setNewPlayers(this.activeTeammates);
     }
 
     public void setUI(UI ui){
@@ -32,8 +40,9 @@ public class Controller {
             Result result = this.activeTeammate.doAction(this.ui);
             // Check if the player moved
             if(result.getAction().equals("Move")){
-                Directions direction = activeTeammate.doMove(this.ui);
+                Directions direction = this.activeTeammate.doMove(this.ui);
                 result.addDirectionToMessage(direction);
+                result.addGameLocation(this.locationManager.getGameLocation(this.activeTeammate));
             }
 
             addResult(result);
