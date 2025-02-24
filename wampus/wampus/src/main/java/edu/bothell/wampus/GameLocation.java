@@ -16,6 +16,10 @@ public class GameLocation {
         this.y = y;
         this.locationId = locationId;
     }
+    public GameLocation(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
 
     //Method
 
