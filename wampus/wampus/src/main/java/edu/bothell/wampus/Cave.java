@@ -9,8 +9,9 @@ public class Cave {
         for(int i = 0; i < cave.length; i++){
             for(int j = 0; j < cave[i].length; j++){
                 cave[i][j] = new GameLocation(i,j,getLocationId(i, j));
+                System.out.print(getLocationId(i,j));
             }
-        }
+        }System.out.println();
     }
 
     public GameLocation spawnPoint(){
@@ -21,6 +22,10 @@ public class Cave {
         i *= 6;
         i += j + 1;
         return i;
+    }
+
+    public GameLocation getLocationBasedOnCoords(int x, int y){
+        return this.cave[x][y];
     }
 
 

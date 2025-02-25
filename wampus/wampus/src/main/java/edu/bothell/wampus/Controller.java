@@ -33,7 +33,7 @@ public class Controller {
     }
 
     public void start() {
-        this.activeTeammate = this.activeTeammates.get(0);
+        this.activeTeammate = this.activeTeammates.getFirst();
         while (!gameOver()) {
 
             this.ui.showPersonTurn((this.activeTeammate));
@@ -41,8 +41,12 @@ public class Controller {
             // Check if the player moved
             if(result.getAction().equals("Move")){
                 Directions direction = this.activeTeammate.doMove(this.ui);
-                result.addDirectionToMessage(direction);
-                result.addGameLocation(this.locationManager.getGameLocation(this.activeTeammate));
+
+                GameLocation oldLocation = this.locationManager.getGameLocationOfPerson(this.activeTeammate);
+                GameLocation newLocation = this.locationManager.getGameLocationInThisDirection(oldLocation, direction);
+                this.locationManager.changeGameLocationOfPerson(this.activeTeammate, newLocation);
+
+                result.playerMove(oldLocation, newLocation);
             }
 
             addResult(result);

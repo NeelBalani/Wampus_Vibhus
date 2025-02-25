@@ -24,8 +24,11 @@ public class Result {
         }
     }
 
-    public void addFinalGameLocation(GameLocation location) {
-        if(this.message.equals("Move"))
+    public void playerMove(GameLocation oldLocation, GameLocation newLocation) {
+
+        if(this.message.equals("Move")){
+            this.message = " moved from " + oldLocation.getLocationId() + " to " + newLocation.getLocationId();
+        }
     }
 
     public String getAction() {
@@ -36,7 +39,5 @@ public class Result {
         return this.player.getName() + ":" + this.message;
     }
 
-    public void addGameLocation(GameLocation location){
-        this.location = location;
-    }
+
 }

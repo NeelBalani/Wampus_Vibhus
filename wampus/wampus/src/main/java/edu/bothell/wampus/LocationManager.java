@@ -26,7 +26,26 @@ public class LocationManager {
         }
     }
 
-    public GameLocation getGameLocation(Person p){
+    public GameLocation getGameLocationOfPerson(Person p){
         return this.playerLocations.get(p);
+    }
+
+    public GameLocation getGameLocationInThisDirection(GameLocation initialLocation, Directions direction){
+        int[] initialLocationValue = initialLocation.getLocation();
+        int[] finalLocationValue = new int[2];
+        finalLocationValue[0] = initialLocationValue[0] + direction.dX();
+        finalLocationValue[1] = initialLocationValue[1] + direction.dY();
+
+        GameLocation finalGameLocation;
+        try{
+            finalGameLocation = this.cave.getLocationBasedOnCoords(finalLocationValue[0], finalLocationValue[1]);
+            return finalGameLocation;
+        } catch(IndexOutOfBoundsException e){
+            return null;
+        }
+    }
+
+    public void changeGameLocationOfPerson(Person p, GameLocation newGameLocation){
+        this.playerLocations.replace(p, newGameLocation);
     }
 }
